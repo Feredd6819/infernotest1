@@ -64,7 +64,12 @@ def handle_license(chat_id, message):
         key = message.split(" ", 1)[1].strip()
         if key in generated_keys:
             user_licenses[chat_id] = key
-            tg_send(f"✅ تم تفعيل رخصة VIP الخاصة بك:
+           Run python InfernoLogHunter_RealChannels_VIP_Final.py
+  File "/home/runner/work/infernotest1/infernotest1/InfernoLogHunter_RealChannels_VIP_Final.py", line 67
+    tg_send(f"✅ تم تفعيل رخصة VIP الخاصة بك:
+            ^
+SyntaxError: unterminated f-string literal (detected at line 67)
+Error: Process completed with exit code 1.
 <code>{key}</code>", chat_id)
         else:
             tg_send("❌ المفتاح غير صالح أو غير معروف!", chat_id)

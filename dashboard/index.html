@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InfernoLogHunter - Dashboard</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #00ffcc;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff3366;
+    }
+    .vip-box {
+      background: #1e1e1e;
+      padding: 15px;
+      border: 1px solid #333;
+      margin-bottom: 15px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>👑 InfernoLogHunter - VIP Dashboard</h1>
+
+  <div class="vip-box">
+    <h2>🔑 Generate VIP License</h2>
+    <input type="text" id="username" placeholder="Username or ID"/>
+    <button onclick="generateKey()">Generate</button>
+    <p id="result"></p>
+  </div>
+
+  <div class="vip-box">
+    <h2>📡 Bot Status</h2>
+    <p>✅ Online every 20 min via GitHub Actions</p>
+    <p>🔁 Smart delivery of new channels only</p>
+  </div>
+
+  <script>
+    function generateKey() {
+      const username = document.getElementById('username').value;
+      if (!username) {
+        alert("Enter a username!");
+        return;
+      }
+      const key = 'VIP-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+      document.getElementById('result').innerText = "Generated Key for " + username + ": " + key;
+    }
+  </script>
+</body>
+</html>

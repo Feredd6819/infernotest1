@@ -1,0 +1,37 @@
+
+name: 🔥 Deploy InfernoLogHunter Dashboard - VIP Edition
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧾 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🚀 Build project
+        run: npm run build
+
+      - name: ☁️ Deploy to Vercel (or your host)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm i -g vercel
+          vercel --prod --token=$VERCEL_TOKEN
+
+      - name: 🛡️ Secure Build Notice
+        run: echo "✅ This dashboard includes protected VIP license logic. Source control of sensitive license logic is locked on the backend."
